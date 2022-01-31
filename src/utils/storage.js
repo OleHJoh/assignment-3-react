@@ -1,8 +1,12 @@
+const validateKey = key => {
+    if(!key || typeof key !== 'string'){
+        throw new Error('Invalid storage key provided')
+    }
+}
+
 export const storageSave = (key, value) => {
 
-    if(!key || typeof key !== 'string'){
-        throw new Error('storageSave: Invalid storage key provided')
-    }
+    validateKey(key)
 
     if(!value){
         throw new Error('storageSave: No value provided for ' + key)
@@ -13,9 +17,7 @@ export const storageSave = (key, value) => {
 
 export const storageRead = key => {
 
-    if(!key || typeof key !== 'string'){
-        throw new Error('storageRead: Invalid storage key provided')
-    }
+    validateKey(key)
 
     const data = sessionStorage.getItem(key)
     if(data){
@@ -27,9 +29,7 @@ export const storageRead = key => {
 
 export const storageDelete = key => {
 
-    if(!key || typeof key !== 'string'){
-        throw new Error('storageDelete: Invalid storage key provided')
-    }
+    validateKey(key)
 
     sessionStorage.removeItem(key)
 }
