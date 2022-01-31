@@ -27,7 +27,7 @@ export const createUser = async (username) => {
             })
         })
         if(!response.ok){
-            throw new Error('Could not create user with username' + username)
+            throw new Error('Could not create user with username: ' + username)
         }
         const data = await response.json()
         return [null, data]
