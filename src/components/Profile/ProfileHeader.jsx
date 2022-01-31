@@ -1,3 +1,4 @@
+//It's just a component to render a welcome message
 const ProfileHeader = ({username}) => {
     return (
         <header>

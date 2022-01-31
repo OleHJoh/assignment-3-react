@@ -1,6 +1,10 @@
+//Imports the headers function
 import { createHeaders } from "./index"
+
+//Gets the api url from the environment
 const apiUrl = process.env.REACT_APP_API_URL
 
+//Api get request for checking if the user exists by sending the username
 export const checkForUser = async (username) => {
     try{
         const response = await fetch(`${apiUrl}?username=${username}`)
@@ -16,6 +20,7 @@ export const checkForUser = async (username) => {
     }
 }
 
+//Api post request to create the user
 export const createUser = async (username) => {
     try{
         const response = await fetch(apiUrl, {
@@ -38,6 +43,7 @@ export const createUser = async (username) => {
     }
 }
 
+//Login function, checks if the user exists, if not create new user
 export const loginUser = async (username) => {
     const [ checkError, user ] = await checkForUser(username)
 
@@ -53,6 +59,7 @@ export const loginUser = async (username) => {
 
 }
 
+//Api get request to find the user by it's id
 export const userById = async (userId) => {
     try {
         const response = await fetch(`${apiUrl}/${userId}`)

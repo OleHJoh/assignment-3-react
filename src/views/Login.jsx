@@ -1,3 +1,4 @@
+//Imports components needed for this component to work
 import LoginForm from "../components/Login/LoginForm"
 const Login = () => {
     return (

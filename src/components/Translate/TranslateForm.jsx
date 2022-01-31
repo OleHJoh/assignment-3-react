@@ -1,5 +1,7 @@
+//import component used to make this component work
 import { useForm } from "react-hook-form"
 
+//Configuration for whats allowed to be the valid input
 const translateConfig = {
     required: true,
     minLength: 3,
@@ -8,12 +10,15 @@ const translateConfig = {
 
 const TranslateForm = ({onFinish}) => {
 
+    //Gets the functions from useForm component
     const { register, handleSubmit, formState: {errors}} = useForm()
 
+    //onSubmitHandler activated by submitting the form
     const onSubmit = ({translateText}) => {
         onFinish(translateText)
     }
 
+    //Error message listener
     const errorMessage = (() => {
         if(!errors.translateText){
             return null
@@ -29,6 +34,7 @@ const TranslateForm = ({onFinish}) => {
         }
       })()
 
+    //Returns the component to be rendered in the view
     return (
         <form onSubmit={ handleSubmit(onSubmit) }>
             <fieldset>

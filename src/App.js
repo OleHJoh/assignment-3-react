@@ -1,3 +1,4 @@
+//Imports core components to run the app
 import './App.css';
 import {
   BrowserRouter,

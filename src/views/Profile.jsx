@@ -1,3 +1,4 @@
+//Imports components needed for this component to work
 import { useEffect } from "react"
 import { userById } from "../api/user"
 import ProfileActions from "../components/Profile/ProfileActions"
@@ -10,8 +11,10 @@ import { storageSave } from "../utils/storage"
 
 const Profile = () => {
 
+    //Gets the user object from context
     const { user, setUser } = useUser()
 
+    //Uses useEffect to rerender the user data when this page is loaded
     useEffect(() => {
         const findUser = async () => {
             const [ error, latestsUser] = await userById(user.id)

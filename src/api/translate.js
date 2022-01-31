@@ -1,8 +1,12 @@
+//Imports the headers function
 import { createHeaders } from "."
 
+//Gets the api url form the environment
 const apiUrl = process.env.REACT_APP_API_URL
 
+//Adds the new translation the user did to the api
 export const addTranslation = async (user, translation) => {
+
     try {
         const response = await fetch(`${apiUrl}/${user.id}`,{
             method: 'PATCH',
@@ -24,6 +28,7 @@ export const addTranslation = async (user, translation) => {
     }
 }
 
+//Clears out all the translations for the user in the api
 export const clearTranslationHistory = async (userId) => {
     try {
         const response = await fetch(`${apiUrl}/${userId}`, {
