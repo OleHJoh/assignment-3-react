@@ -1,18 +1,34 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
+import { addTranslation } from "../api/translate"
 import TranslateDisplay from "../components/Translate/TranslateDisplay"
 import TranslateForm from "../components/Translate/TranslateForm"
+import { STORAGE_KEY_USER } from "../const/storageKeys"
+import { useUser } from "../context/UserContext"
 import withAuth from "../hoc/withAuth"
+import { storageSave } from "../utils/storage"
 
 const Translate = () => {
 
-    const [ sentence , setSentence] = useState(null)
-    const [ letterArray, setLetterArray] = useState([])
+    const [ sentence , setSentence ] = useState(null)
+    const [ letterArray, setLetterArray ] = useState([])
+    const [ errorMessage, setErrorMessage ] = useState(null)
+    const { user, setUser } = useUser()
 
-    const handleTranslate = (sentenceToTranslate) => {
-        const specialRemoval = sentenceToTranslate.replace(/[^a-zA-Z0-9 ]/g, '')
+    const handleTranslate = async (sentenceToTranslate) => {
+        const specialRemoval = sentenceToTranslate.replace(/[^a-zA-Z ]/g, '')
         const spaceRemoval = specialRemoval.replaceAll(' ', '')
         setSentence(spaceRemoval)
         setLetterArray(spaceRemoval.split(""))
+
+        const [ error, updatedUser] = await addTranslation(user, specialRemoval)
+
+        if(error !== null){
+            setErrorMessage(error)
+            return
+        }
+        
+        storageSave(STORAGE_KEY_USER, updatedUser)
+        setUser(updatedUser)
     }
 
     let signTranslate = letterArray.map((letter, index) => {
@@ -29,6 +45,7 @@ const Translate = () => {
             <section>
                 { sentence && signTranslate }
             </section>
+            { errorMessage && <span>{ errorMessage }</span>}
         </>
     )
 }
