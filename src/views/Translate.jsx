@@ -12,11 +12,7 @@ const Translate = () => {
         const specialRemoval = sentenceToTranslate.replace(/[^a-zA-Z0-9 ]/g, '')
         const spaceRemoval = specialRemoval.replaceAll(' ', '')
         setSentence(spaceRemoval)
-        sentenceSplit(spaceRemoval)
-    }
-
-    const sentenceSplit = (data) => {
-        setLetterArray(data.split(""))
+        setLetterArray(spaceRemoval.split(""))
     }
 
     let signTranslate = letterArray.map((letter, index) => {
