@@ -1,7 +1,7 @@
 export const storageSave = (key, value) => {
 
-    if(!key){
-        throw new Error('storageSave: No storage key provided')
+    if(!key || typeof key !== 'string'){
+        throw new Error('storageSave: Invalid storage key provided')
     }
 
     if(!value){
@@ -13,8 +13,8 @@ export const storageSave = (key, value) => {
 
 export const storageRead = key => {
 
-    if(!key){
-        throw new Error('storageRead: No storage key provided')
+    if(!key || typeof key !== 'string'){
+        throw new Error('storageRead: Invalid storage key provided')
     }
 
     const data = sessionStorage.getItem(key)
@@ -27,8 +27,8 @@ export const storageRead = key => {
 
 export const storageDelete = key => {
 
-    if(!key){
-        throw new Error('storageDelete: No storage key provided')
+    if(!key || typeof key !== 'string'){
+        throw new Error('storageDelete: Invalid storage key provided')
     }
 
     sessionStorage.removeItem(key)
