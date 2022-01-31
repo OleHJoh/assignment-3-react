@@ -12,7 +12,7 @@ const TranslationHistory = ({ translations }) => {
 
             { translationList.length === 0 && <p>You don't have any registered translations.</p>}
 
-            <ul>
+            <ul id="translationHistory">
                 {translationList}
             </ul>
         </section>

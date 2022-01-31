@@ -7,11 +7,12 @@ const Navbar = () => {
 
     return (
         <nav>
+            <img src="Logo.png" alt="Logo" width="55" height="55"/>
             <ul>
-                <li>Words Translations</li>
+                <li><h3>Words Translation</h3></li>
             </ul>
             { user !== null &&
-                <ul>
+                <ul id="navLoginLinks">
                     <li>
                         <NavLink to="/translate">Translations</NavLink>
                     </li>

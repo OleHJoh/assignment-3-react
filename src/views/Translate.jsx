@@ -42,7 +42,7 @@ const Translate = () => {
                 <TranslateForm onFinish={handleTranslate} />
                 { sentence && <p>Sentence to translate { sentence } </p>}
             </section>
-            <section>
+            <section id="translate-display">
                 { sentence && signTranslate }
             </section>
             { errorMessage && <span>{ errorMessage }</span>}

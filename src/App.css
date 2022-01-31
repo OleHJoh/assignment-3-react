@@ -1,0 +1,71 @@
+body {
+    margin: 0;
+    background-color: lightgray;
+    font-size: 16px;
+    display: flex;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    justify-content: center;
+}
+
+.App{
+    min-width: 800px;
+}
+
+nav{
+    background-color: rebeccapurple;
+    display: flex;
+    flex-direction: row;
+}
+
+nav ul{
+    list-style-type: none;
+}
+
+#navLoginLinks{
+    width: 200px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#navLoginLinks li a{
+    text-decoration: none;
+    color: black;
+}
+
+#navLoginLinks li a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#navLoginLinks li a:active{
+    color: blue;
+}
+
+#translate-from form{
+    width: 700px;
+    display: flex;
+    justify-content: center;
+}
+
+#translate-display{
+    margin-top: 20px;
+    border-style: groove;
+    border-width: 3px;
+    border-radius: 10px;
+    min-height: 200px;
+}
+
+#profileLinks{
+    list-style: none;
+}
+
+#profileLinks li{
+    margin-top: 10px;
+}
+
+#translationHistory{
+    list-style: numeric;
+}
